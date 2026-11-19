@@ -17,14 +17,15 @@ struct PitchReadoutView: View {
     var body: some View {
         VStack(spacing: 8) {
             Text(noteActive ? noteName(for: detectedNote) : "—")
-                .font(.system(size: 48, weight: .bold, design: .rounded))
+                .font(.system(size: 44, weight: .medium))
                 .contentTransition(.numericText())
             Text(noteActive ? String(format: "%.1f Hz", detectedFrequency) : "No pitch detected")
-                .font(.callout)
+                .font(.system(size: 11).monospacedDigit())
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
-        .padding()
+        .padding(12)
+        .textSelection(.disabled)
         .onAppear(perform: refresh)
         .onReceive(timer) { _ in refresh() }
     }

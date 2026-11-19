@@ -6,6 +6,12 @@ options:
   deploymentTarget:
     macOS: "14.0"
 
+packages:
+  # Shared Perfect Ink look (tokens and controls), from kriogenx0/volta-native.
+  VoltaNative:
+    url: https://github.com/kriogenx0/volta-native
+    branch: main
+
 settings:
   base:
     MARKETING_VERSION: "1.0.0"
@@ -36,6 +42,7 @@ targets:
       - target: TracerExtension
         embed: true
         codeSign: true
+      - package: VoltaNative
 
   TracerExtension:
     type: app-extension
@@ -58,3 +65,5 @@ targets:
         ENABLE_APP_SANDBOX: YES
         ENABLE_USER_SELECTED_FILES: readonly
         SKIP_INSTALL: YES
+    dependencies:
+      - package: VoltaNative

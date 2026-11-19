@@ -16,7 +16,18 @@ struct ParameterSlider: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Text(param.displayName)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text("\(param.value, specifier: specifier)")
+                    .fontWeight(.medium)
+                    .monospacedDigit()
+            }
+            .font(.system(size: 11))
+            .textSelection(.disabled)
+
             Slider(
                 value: $param.value,
                 in: param.min...param.max,
@@ -26,10 +37,11 @@ struct ParameterSlider: View {
             ) {
                 EmptyView()
             }
+            .font(.system(size: 10).monospacedDigit())
+            .foregroundStyle(.secondary)
             .accessibility(identifier: param.displayName)
-            Text("\(param.displayName): \(param.value, specifier: specifier)")
         }
-        .padding()
+        .padding(.vertical, 4)
     }
 }
 
@@ -39,6 +51,6 @@ struct ParameterToggle: View {
 
     var body: some View {
         Toggle(param.displayName, isOn: $param.boolValue)
-            .padding()
+            .font(.system(size: 12))
     }
 }
