@@ -1,4 +1,5 @@
 import SwiftUI
+import VoltaNative
 
 struct ContentView: View {
     @StateObject private var harness = AudioEngineHarness()
@@ -6,7 +7,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 16) {
             Text("Tracer")
-                .font(.largeTitle.bold())
+                .font(.system(size: 20, weight: .semibold))
             Text("Sing or play a single note into the mic; Tracer emits the detected pitch as MIDI below.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
@@ -25,7 +26,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .controlSize(.large)
+            .buttonStyle(.voltaProminent)
             .keyboardShortcut(.defaultAction)
 
             if let lastError = harness.lastError {
@@ -34,18 +35,19 @@ struct ContentView: View {
                     .font(.caption)
             }
 
-            Divider()
+            VoltaDivider()
 
-            Text("Recent MIDI events")
-                .font(.headline)
+            VoltaSectionLabel("Recent MIDI events")
+                .frame(maxWidth: .infinity, alignment: .leading)
 
             List(harness.events.reversed()) { event in
                 Text(event.description)
-                    .font(.system(.body, design: .monospaced))
+                    .font(.system(size: 11, design: .monospaced))
             }
             .frame(minHeight: 200)
         }
         .padding()
         .frame(minWidth: 420, minHeight: 480)
+        .voltaControls()
     }
 }
