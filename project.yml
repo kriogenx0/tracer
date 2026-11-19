@@ -1,7 +1,7 @@
 name: Tracer
 
 options:
-  bundleIdPrefix: com.tracer
+  bundleIdPrefix: org.perfectink
   createIntermediateGroups: true
   deploymentTarget:
     macOS: "14.0"
@@ -29,7 +29,7 @@ targets:
         INFOPLIST_FILE: TracerApp/Info.plist
         GENERATE_INFOPLIST_FILE: NO
         CODE_SIGN_ENTITLEMENTS: TracerApp/TracerApp.entitlements
-        PRODUCT_BUNDLE_IDENTIFIER: com.tracer.Tracer
+        PRODUCT_BUNDLE_IDENTIFIER: org.perfectink.tracer
         PRODUCT_NAME: Tracer
         ENABLE_APP_SANDBOX: YES
     dependencies:
@@ -49,7 +49,7 @@ targets:
         INFOPLIST_FILE: TracerExtension/Info.plist
         GENERATE_INFOPLIST_FILE: NO
         CODE_SIGN_ENTITLEMENTS: TracerExtension/TracerExtension.entitlements
-        PRODUCT_BUNDLE_IDENTIFIER: com.tracer.Tracer.TracerExtension
+        PRODUCT_BUNDLE_IDENTIFIER: org.perfectink.tracer.TracerExtension
         PRODUCT_NAME: TracerExtension
         SWIFT_OBJC_BRIDGING_HEADER: TracerExtension/TracerExtension-Bridging-Header.h
         SWIFT_OBJC_INTEROP_MODE: objcxx

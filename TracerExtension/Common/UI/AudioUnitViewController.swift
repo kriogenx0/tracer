@@ -3,7 +3,7 @@ import CoreAudioKit
 import os
 import SwiftUI
 
-private let log = Logger(subsystem: "com.tracer.Tracer.TracerExtension", category: "AudioUnitViewController")
+private let log = Logger(subsystem: "org.perfectink.tracer.TracerExtension", category: "AudioUnitViewController")
 
 @MainActor
 public class AudioUnitViewController: AUViewController, AUAudioUnitFactory {
