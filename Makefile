@@ -44,3 +44,13 @@ uninstall: close
 	rm -rf $(INSTALL_APP)
 
 reinstall: uninstall install
+
+##@ Agent rules
+
+AGENT_RULES ?= $(HOME)/Sites/agent-rules
+
+rules: ## Sync shared agent rules from agent-rules into docs/rules/
+	@$(AGENT_RULES)/bin/agent-rules sync "$(CURDIR)"
+
+rules-check: ## Show what `make rules` would change (exit 1 if anything)
+	@$(AGENT_RULES)/bin/agent-rules check "$(CURDIR)"
