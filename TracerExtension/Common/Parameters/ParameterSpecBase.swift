@@ -145,3 +145,21 @@ extension ParameterTreeSpec {
         AUParameterTree.createTree(withChildren: self.children.createAUParameterNodes())
     }
 }
+
+// MARK: - Lookup
+
+extension ParameterTreeSpec {
+    /// The spec for a parameter, so the UI reads its default (and anything
+    /// else) from the one place the parameter is defined.
+    func parameterSpec(identifier: String) -> ParameterSpec? {
+        ParameterTreeSpec.find(identifier, in: children)
+    }
+
+    private static func find(_ identifier: String, in nodes: [NodeSpec]) -> ParameterSpec? {
+        for node in nodes {
+            if let spec = node as? ParameterSpec, spec.identifier == identifier { return spec }
+            if let group = node as? ParameterGroupSpec, let spec = find(identifier, in: group.children) { return spec }
+        }
+        return nil
+    }
+}

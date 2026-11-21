@@ -5,8 +5,10 @@ struct ParameterControlsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            ParameterSlider(param: parameterTree.global.gateThreshold)
-            ParameterSlider(param: parameterTree.global.sensitivity)
+            HStack(spacing: 16) {
+                ParameterKnob(param: parameterTree.global.gateThreshold)
+                ParameterKnob(param: parameterTree.global.sensitivity)
+            }
             ParameterToggle(param: parameterTree.global.pitchBendEnable)
         }
     }

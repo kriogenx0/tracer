@@ -117,7 +117,7 @@ final class ObservableAUParameter: ObservableAUParameterNode, ObservableObject {
     let min: AUValue
     let max: AUValue
     let displayName: String
-    let defaultValue: AUValue = 0.0
+    let defaultValue: AUValue
     let unit: AudioUnitParameterUnit
 
     init(_ parameter: AUParameter) {
@@ -127,6 +127,7 @@ final class ObservableAUParameter: ObservableAUParameterNode, ObservableObject {
         self.max = parameter.maxValue
         self.displayName = parameter.displayName
         self.unit = parameter.unit
+        self.defaultValue = TracerParameterSpecs.parameterSpec(identifier: parameter.identifier)?.defaultValue ?? parameter.value
         super.init()
 
         /// Use the parameter.token(byAddingParameterObserver:) function to monitor for parameter

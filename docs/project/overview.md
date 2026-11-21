@@ -7,7 +7,9 @@ Tracer is a macOS Audio Unit (AUv3) that detects pitch and turns it into MIDI no
 - `make setup`: install XcodeGen if missing and generate `Tracer.xcodeproj` from `project.yml`.
 - `make dev`: regenerate, delete the previous Debug build, build into `build/Debug`, and open `Tracer.app`.
 - `make build`: Release build into `build/Release`.
-- `make install` / `make uninstall` / `make reinstall`: install the Release app into `~/Applications`.
+- `make open` / `make close`: open the Debug app, or quit it.
+- `make install` / `make uninstall` / `make reinstall` / `make install-open`: install the Release app into `/Applications` (and open it).
+- `make help`: list every target.
 - `make clean`: remove `build/`.
 - `make rules` / `make rules-check`: sync or check the shared rules in `docs/rules/`.
 
